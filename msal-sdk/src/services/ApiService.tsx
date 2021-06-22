@@ -1,18 +1,17 @@
 import { DigitalTwinModelsListResponse, DigitalTwinsClient, DigitalTwinsModelData } from "@azure/digital-twins-core";
-import { DefaultHttpClient, TokenCredential, WebResourceLike } from "@azure/core-http";
+import { AccessToken, DefaultHttpClient, TokenCredential, WebResourceLike } from "@azure/core-http";
 import { PagedAsyncIterableIterator } from "@azure/core-paging";
 
 import { adtHost } from "../authConfig";
+import { AuthenticationResult, IPublicClientApplication } from "@azure/msal-browser";
 
 const _adtHost: string = adtHost;
 
 class CustomHttpClient {
   _client: DefaultHttpClient;
-  _token: string; 
   
-  constructor(token: string) {
+  constructor() {
     this._client = new DefaultHttpClient();
-    this._token = token;
   }
 
   sendRequest(httpRequest: WebResourceLike) {
@@ -20,7 +19,6 @@ class CustomHttpClient {
     const baseUrl = new URL(window.location.origin);
     
     httpRequest.headers.set("x-adt-host", _adtHost);
-    httpRequest.headers.set("Authorization", `Bearer ${this._token}`);
       
     url.host = baseUrl.host;
     url.pathname = `/api/proxy${url.pathname}`;
@@ -33,23 +31,40 @@ class CustomHttpClient {
 }
 
 export class ApiService {
-  _token: string;  
+  _msalClient: IPublicClientApplication;
+  _msalRequest: any;
   _client: DigitalTwinsClient | undefined;
   
-  constructor(token: string) {    
-    this._token = token;    
+  constructor(_msalClient: IPublicClientApplication, msalRquest: any) {    
+    this._msalClient = _msalClient;
+    this._msalRequest = msalRquest;
     this._client = undefined;
   }
 
-  async initialize() {
-    const appAdtUrl = `http://${_adtHost}`;
-     
-    const tokenCredentials: TokenCredential = {
-      getToken: async () => null
-    };
+  _tokenCredentials: TokenCredential = {
+    getToken: async () => {
+      let token: AuthenticationResult;
+      try
+      {
+        token = await this._msalClient.acquireTokenSilent(this._msalRequest)
+      }
+      catch(e)
+      {
+        token = await this._msalClient.acquireTokenPopup(this._msalRequest)
+      }
 
-    const httpClient: CustomHttpClient = new CustomHttpClient(this._token);
-    this._client = new DigitalTwinsClient(appAdtUrl, tokenCredentials, { httpClient });    
+      return {
+        token: token.accessToken,
+        expiresOnTimestamp: token.expiresOn?.getTime(),
+      } as AccessToken;
+    }
+  };
+  
+  async initialize() {
+    const appAdtUrl = `https://${_adtHost}`;
+     
+    const httpClient: CustomHttpClient = new CustomHttpClient();
+    this._client = new DigitalTwinsClient(appAdtUrl, this._tokenCredentials, { httpClient });    
   }
 
   async listModels() {
