@@ -56,55 +56,55 @@ function ProfileContent(props) {
 
   return (
     <div style={{ margin: "20px" }}>
-          <h3 className="card-title">Welcome {name}</h3>
-          {accessToken ? (
+      <h3 className="card-title">Welcome {name}</h3>
+      {accessToken ? (
+      <div>
+          <h5>Access Token Acquired!</h5>          
+          <br /><br />
+          <Button variant="secondary" onClick={CallGetModelsApi}>
+          Get Models API
+          </Button>
+          &nbsp;&nbsp;
+          <Button variant="secondary" onClick={CallGetTwinsApi}>
+          Get Twins API
+          </Button>
+          <br />
+          <br />
+          {models ? (
           <div>
-              <h5>Access Token Acquired!</h5>          
-              <br /><br />
-              <Button variant="secondary" onClick={CallGetModelsApi}>
-              Get Models API
-              </Button>
-              &nbsp;&nbsp;
-              <Button variant="secondary" onClick={CallGetTwinsApi}>
-              Get Twins API
-              </Button>
-              <br />
-              <br />
-              {models ? (
-              <div>
-                  <h2>Get Models</h2>
-                  {models.map((x, key) => (
-                  <div key={key}>
-                      <span>{x.id}</span>
-                      <br />
-                  </div>
-                  ))}
+              <h2>Get Models</h2>
+              {models.map((x, key) => (
+              <div key={key}>
+                  <span>{x.id}</span>
+                  <br />
               </div>
-              ) : (
-              <div></div>
-              )}
-              {twins ? (
-              <div>
-                  <h2>Get Twins</h2>
-                  {twins.map((x, key) => (
-                  <div key={key}>
-                      <span>{x.$dtId}</span>
-                      <br />
-                  </div>
-                  ))}
-              </div>
-              ) : (
-              <div></div>
-              )}
+              ))}
           </div>
           ) : (
+          <div></div>
+          )}
+          {twins ? (
           <div>
-              <Button variant="secondary" onClick={RequestAccessToken}>
-              Request Access Token
-              </Button>
+              <h2>Get Twins</h2>
+              {twins.map((x, key) => (
+              <div key={key}>
+                  <span>{x.$dtId}</span>
+                  <br />
+              </div>
+              ))}
           </div>
+          ) : (
+          <div></div>
           )}
       </div>
+      ) : (
+      <div>
+          <Button variant="secondary" onClick={RequestAccessToken}>
+          Request Access Token
+          </Button>
+      </div>
+      )}
+  </div>
   );
 }
 
