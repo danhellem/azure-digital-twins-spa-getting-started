@@ -55,7 +55,7 @@ function ProfileContent(props) {
   }
 
   return (
-    <div style={{ margin: "20px" }}>
+        <div style={{ margin: "20px" }}>
       <h3 className="card-title">Welcome {name}</h3>
       {accessToken ? (
       <div>
@@ -71,40 +71,40 @@ function ProfileContent(props) {
           <br />
           <br />
           {models ? (
-          <div>
-              <h2>Get Models</h2>
-              {models.map((x, key) => (
-              <div key={key}>
-                  <span>{x.id}</span>
-                  <br />
-              </div>
-              ))}
-          </div>
-          ) : (
-          <div></div>
-          )}
-          {twins ? (
-          <div>
-              <h2>Get Twins</h2>
-              {twins.map((x, key) => (
-              <div key={key}>
-                  <span>{x.$dtId}</span>
-                  <br />
-              </div>
-              ))}
-          </div>
-          ) : (
-          <div></div>
-          )}
-      </div>
-      ) : (
-      <div>
-          <Button variant="secondary" onClick={RequestAccessToken}>
-          Request Access Token
-          </Button>
-      </div>
-      )}
-  </div>
+            <div>
+                <h2>Get Models</h2>
+                {models.map((x, key) => (
+                <div key={key}>
+                    <span>{x.id}</span>
+                    <br />
+                </div>
+                ))}
+            </div>
+            ) : (
+            <div></div>
+            )}
+            {twins ? (
+            <div>
+                <h2>Get Twins</h2>
+                {twins.map((x, key) => (
+                <div key={key}>
+                    <span>{x.$dtId}</span>
+                    <br />
+                </div>
+                ))}
+            </div>
+            ) : (
+            <div></div>
+            )}
+        </div>
+        ) : (
+        <div>
+            <Button variant="secondary" onClick={RequestAccessToken}>
+            Request Access Token
+            </Button>
+        </div>
+        )}
+    </div>
   );
 }
 
