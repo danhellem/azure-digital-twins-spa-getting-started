@@ -7,13 +7,13 @@ import { SignOutButton } from "./SignOutButton";
 /**
  * Renders the navbar component with a sign-in button if a user is not authenticated
  */
-export const PageLayout = (props: any) => {
+export const PageLayout = (props: { children: any; }) => {
     const isAuthenticated = useIsAuthenticated();
 
     return (
         <>
             <Navbar bg="primary" variant="dark">
-                <a className="navbar-brand" href="/" style={{paddingLeft: "20px"}}>ADT - MSAL React Tutorial</a>
+                <a className="navbar-brand" href="/" style={{paddingLeft: "20px"}}>ADT using REST - MSAL React Tutorial</a>
                 { isAuthenticated ? <SignOutButton /> : <SignInButton /> }
             </Navbar>         
             <br />

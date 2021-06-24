@@ -48,11 +48,11 @@ function ProfileContent(props) {
         <br></br>       
         <div>
           <Button variant="secondary" onClick={CallGetModelsApi}>
-            Get Models API
+            Call Get Models API
           </Button>
           &nbsp;&nbsp;
           <Button variant="secondary" onClick={CallGetTwinsApi}>
-            Get Twins API
+            Call Get Twins API
           </Button>
           <br />
           <br />

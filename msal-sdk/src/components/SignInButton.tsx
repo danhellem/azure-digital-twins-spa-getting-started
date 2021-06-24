@@ -2,9 +2,10 @@ import React from "react";
 import { useMsal } from "@azure/msal-react";
 import { loginRequest } from "../authConfig";
 import Button from "react-bootstrap/Button";
+import { IPublicClientApplication } from "@azure/msal-browser";
 
-function handleLogin(instance) {
-    instance.loginRedirect(loginRequest).catch(e => {
+function handleLogin(instance: IPublicClientApplication) {
+    instance.loginRedirect(loginRequest).catch((e: any) => {
         console.error(e);
     });
 }
