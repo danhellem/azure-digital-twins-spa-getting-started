@@ -5,7 +5,7 @@ This repo contains several sample projects of examples on how to connect to Azur
 - [React, uing MSAL with direct calls to Azure Digital Twins REST API's](./react-msal-rest)
 - [React, using MSAL with the Azure Digital Twins SDK](./react-msal-sdk)
 
-## ⚠ Caution ⚠
+### ⚠ Caution ⚠
 
 CORS is not yet supported by Azure Digital Twins. So a proxy is used to work around this issue. This is a security risk.
 
