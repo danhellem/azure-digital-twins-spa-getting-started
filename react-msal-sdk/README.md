@@ -1,4 +1,4 @@
-# Getting Started with Azure Digital Twins<br/>React app using MSAL and the Digital Twins SDK
+# React app using MSAL and the Digital Twins SDK
 
 This project is an example on how to get started with a React app connecting to Azure Digital Twins. It is using MSAL.js for authentication and makes use of the [@azure/digital-twins-core](https://github.com/Azure/azure-sdk-for-js/tree/main/sdk/digitaltwins/digital-twins-core) package.
 
