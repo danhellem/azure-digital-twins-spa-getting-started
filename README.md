@@ -1,4 +1,4 @@
-# Code Examples for an Azure Digital Twins SPA
+# Code Examples for a Azure Digital Twins Single-page Application
 
 This repo contains several sample projects of examples on how to connect to Azure Digital Twins from a Single-page Application (SPA). 
 
