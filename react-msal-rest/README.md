@@ -2,7 +2,7 @@
 
 This project is an example on how to get started with a React app connecting to Azure Digital Twins. It is using MSAL.js for authentication and making direct calls to the Azure Digital Twins REST API's.
 
-## ⚠ Caution ⚠
+### ⚠ Caution ⚠
 
 CORS is not yet supported by Azure Digital Twins. So a proxy is used to work around this issue. This is a security risk.
 
