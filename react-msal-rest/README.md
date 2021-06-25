@@ -8,15 +8,15 @@ CORS is not yet supported by Azure Digital Twins. So a proxy is used to work aro
 
 We **do not** recommend you use the structure of this application in a production environment. It is inteded to be run locally to validate your proof of concept using Azure Digitial Twins. It is not production ready!
 
-## App registration
+### `App registration`
 
 Before you get started with the project, you must register your application in the Microsoft identity platform. [Follow these steps](https://docs.microsoft.com/en-us/azure/active-directory/develop/scenario-spa-app-registration).
 
-## authConfig.js
+### `authConfig.js`
 
 Once you register your application, you need to configure the ``authConfig.js`` with the appropiate values. The file has been setup to work as is, but you need to enter values in for the following:
 
-```JSON
+```
 ...
 auth: {
     clientId: "Enter_the_Application_Id_Here",
@@ -43,6 +43,3 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 To learn about Single-page applications using MSAL.js, checkout the turorials for [React](https://docs.microsoft.com/en-us/azure/active-directory/develop/tutorial-v2-react), [JavaScript](https://docs.microsoft.com/en-us/azure/active-directory/develop/tutorial-v2-javascript-auth-code), and [Angular](https://docs.microsoft.com/en-us/azure/active-directory/develop/tutorial-v2-angular-auth-code)
 
 To learn more about the Azure Digital Twins REST API's, see the offical documentation here: [https://docs.microsoft.com/en-us/rest/api/azure-digitaltwins/](https://docs.microsoft.com/en-us/rest/api/azure-digitaltwins/)
-
-
-
