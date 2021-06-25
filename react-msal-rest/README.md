@@ -1,4 +1,4 @@
-# Getting Started with Azure Digital Twins<br/>React app using MSAL and REST
+# React app using MSAL and REST
 
 This project is an example on how to get started with a React app connecting to Azure Digital Twins. It is using MSAL.js for authentication and making direct calls to the Azure Digital Twins REST API's.
 
