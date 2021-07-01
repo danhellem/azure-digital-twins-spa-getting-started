@@ -12,19 +12,17 @@ We **do not** recommend you use the structure of this application in a productio
 
 Before you get started with the project, you must register your application in the Microsoft identity platform. [Follow these steps](https://docs.microsoft.com/en-us/azure/active-directory/develop/scenario-spa-app-registration).
 
-### `authConfig.js`
+### `authConfig.tsx`
 
-Once you register your application, you need to configure the ``authConfig.js`` with the appropiate values. The file has been setup to work as is, but you need to enter values in for the following:
+Once you register your application, you need to configure the ``authConfig.tsx`` with the appropiate values. The file has been setup to work as is, but you need to enter values in for the following:
 
 ```
-...
-auth: {
-    clientId: "Enter_the_Application_Id_Here",
-    authority: "https://login.microsoftonline.com/Enter_the_Tenant_Info_Here",
-    ...
-  },
-  ...
-  export const adtHost = "Enter_the_Azure_Digital_Twins_Instance_Name_Here";
+export const authConfig = {  
+    clientId: "enter_the_application_id_here",
+    tenantId: "enter_the_tenant_id_here",    
+};
+
+export const adtHost = "enter_your_azure_digital_twins_instance_name_here";
 
 ```
 ### `npm install`
@@ -40,6 +38,6 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 To learn React, check out the [React documentation](https://reactjs.org/).
 
-To learn about Single-page applications using MSAL.js, checkout the turorials for [React](https://docs.microsoft.com/en-us/azure/active-directory/develop/tutorial-v2-react), [JavaScript](https://docs.microsoft.com/en-us/azure/active-directory/develop/tutorial-v2-javascript-auth-code), and [Angular](https://docs.microsoft.com/en-us/azure/active-directory/develop/tutorial-v2-angular-auth-code)
+To learn about Single-page applications using @azure/identity sdk, check out the examples at [https://github.com/Azure/azure-sdk-for-js/blob/hotfix/identity_1.3.0/sdk/identity/identity/samples/AzureIdentityExamples.md](https://github.com/Azure/azure-sdk-for-js/blob/hotfix/identity_1.3.0/sdk/identity/identity/samples/AzureIdentityExamples.md)
 
 To learn more about the Azure Digital Twins REST API's, see the offical documentation here: [https://docs.microsoft.com/en-us/rest/api/azure-digitaltwins/](https://docs.microsoft.com/en-us/rest/api/azure-digitaltwins/)
