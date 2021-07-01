@@ -1,13 +1,10 @@
-import React, { useState } from "react";
-import { PageLayout } from "./components/PageLayout";
-import {
-  AuthenticatedTemplate,
-  UnauthenticatedTemplate,
-  useMsal,
-} from "@azure/msal-react";
-import { loginRequest } from "./authConfig";
-import Button from "react-bootstrap/Button";
+import { useState } from "react";
+import { AuthenticatedTemplate, UnauthenticatedTemplate, useMsal, } from "@azure/msal-react";
 
+import Button from "react-bootstrap/Button";
+import { PageLayout } from "./components/PageLayout";
+
+import { loginRequest } from "./authConfig";
 import { ApiService } from "./services/ApiService";
 
 function ProfileContent(props) {
@@ -15,10 +12,7 @@ function ProfileContent(props) {
   const [models, setModels] = useState(null);
   const [twins, setTwins] = useState(null);
   const name = accounts[0] && accounts[0].name;
-  const request = {
-    ...loginRequest,
-    account: accounts[0],
-  };  
+  const request = { ...loginRequest, account: accounts[0], };  
 
   // call getmodels api
   function CallGetModelsApi() {

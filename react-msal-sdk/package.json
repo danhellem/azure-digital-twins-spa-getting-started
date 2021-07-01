@@ -1,5 +1,5 @@
 {
-  "name": "msal-react-sdk",
+  "name": "react-msal-sdk",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
