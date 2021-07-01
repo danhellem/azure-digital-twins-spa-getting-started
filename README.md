@@ -2,6 +2,7 @@
 
 This repo contains several sample projects of examples on how to connect to Azure Digital Twins from a Single-page Application (SPA). 
 
+- [React, using @azure/identity with direct calls to Azure Digital Twins REST API's](./react-azure-identity-rest)
 - [React, uing MSAL with direct calls to Azure Digital Twins REST API's](./react-msal-rest)
 - [React, using MSAL with the Azure Digital Twins SDK](./react-msal-sdk)
 
