@@ -1,3 +1,4 @@
 react-msal-sdk/src/authConfig.js
 react-msal-rest/src/authConfig.js
 react-azure-identity-rest/src/authConfig.tsx
+react-azure-identity-sdk/src/authConfig.tsx
