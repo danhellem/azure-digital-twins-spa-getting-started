@@ -4,7 +4,7 @@ export const Header = () => (
     <header className="App-header">      
       <ul>
         <li>
-          <Link to="/">Home</Link>
+          <Link to="/">Test Page</Link>
         </li>
         <li>
           <Link to="/devices">Devices</Link>
