@@ -7,8 +7,8 @@ export const PageLayout = (props: { children: any; }) => {
 
     return (
         <>
-            <Navbar bg="primary" variant="dark">
-                <a className="navbar-brand" href="/" style={{paddingLeft: "20px"}}>ADT using the Sdk - @Azure/Identity React Tutorial</a>               
+            <Navbar bg="secondary" variant="dark">
+                <a className="navbar-brand" href="/" style={{paddingLeft: "20px"}}>Azure Digital Twins Working React App</a>               
             </Navbar>         
             <br />
             {props.children}

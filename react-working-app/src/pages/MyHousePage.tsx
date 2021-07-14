@@ -15,21 +15,21 @@ const _credential = new InteractiveBrowserCredential({
   clientId: authConfig.clientId,
 });
 
-export class DevicesPage extends React.Component<Props, IDevicesPage> {
-  state: IDevicesPage = {
+export class MyHousePage extends React.Component<Props, IMyHousePage> {
+  state: IMyHousePage = {
     message: "",
     data: []
   };
 
   componentDidMount() {
-    this.listDevices();
+    this.listFloorsAndRooms();
   }
 
   // refresh data by re-load twins
   private handleRefreshPage = () => {
     console.log("data refreshed");
 
-    this.listDevices();
+    this.listFloorsAndRooms();
   };
 
   // function to check and compare the dates
@@ -46,10 +46,10 @@ export class DevicesPage extends React.Component<Props, IDevicesPage> {
     return false;
   }
 
-  public async listDevices() {
+  public async listFloorsAndRooms() {
     const api = new ApiService(_credential, adtContext);
     const twinResult = await api.queryTwins(
-      "SELECT * FROM digitaltwins WHERE IS_OF_MODEL('dtmi:com:hellem:dtsample:sensor;1')"
+      "SELECT * FROM digitaltwins WHERE IS_OF_MODEL('dtmi:com:hellem:dtsample:floor;1') OR IS_OF_MODEL('dtmi:com:hellem:dtsample:room;1')"
     );
 
     var twinData: ITwinCore[] = twinResult.map((x) => {
@@ -73,10 +73,10 @@ export class DevicesPage extends React.Component<Props, IDevicesPage> {
         <div className="content">
           <div>
             <Container fluid>
-              <Row style={{ marginBottom: '20px' }}>
+              <Row>
                 <Col md={12} lg={9} sm={24}>
                   <div>
-                    <h2>Devices</h2>
+                    <h2>Floors</h2>
                   </div>
                 </Col>
                 <Col md={4} lg={3} sm={8}>
@@ -89,8 +89,8 @@ export class DevicesPage extends React.Component<Props, IDevicesPage> {
                   </div>
                 </Col>
               </Row>
-              <Row>
-                {this.state.data.map((x: any, key: React.Key | null | undefined) => (
+              <Row style={{ marginBottom: '40px' }}>
+                {this.state.data.filter(d => d.model.includes('dtmi:com:hellem:dtsample:floor;1')).map((x, key) => (
                   <Col md={4} lg={3} sm={8} key={key} style={{ marginBottom: '20px' }}>
                     <Card style={{ width: '18rem' }}>
                       <Card.Header as="h5">{x.name}</Card.Header>
@@ -98,7 +98,8 @@ export class DevicesPage extends React.Component<Props, IDevicesPage> {
                         <Card.Subtitle className="mb-2 text-muted">
                           {x.temperature} °F
                           <br />
-                          {x.humidity}% Humidity</Card.Subtitle>
+                          {x.humidity}% Humidity
+                        </Card.Subtitle>                        
                       </Card.Body>
                       <Card.Footer><div>
                         <span style={this.dateCheck(x.lastUpdated, 20) ? { fontSize: 13, fontWeight: "bold", color: "red" } : { fontSize: 13 }}>
@@ -107,7 +108,36 @@ export class DevicesPage extends React.Component<Props, IDevicesPage> {
                       </div>
                       </Card.Footer>
                     </Card>
-                  </Col>
+                  </Col>                  
+                ))}
+              </Row>
+              <Row>
+                <Col md={12} lg={9} sm={24}>
+                  <div>
+                    <h2>Rooms</h2>
+                  </div>
+                </Col>
+              </Row>
+              <Row style={{ marginBottom: '20px' }}>
+                {this.state.data.filter(d => d.model.includes('dtmi:com:hellem:dtsample:room;1')).map((x, key) => (
+                  <Col md={4} lg={3} sm={8} key={key} style={{ marginBottom: '20px' }}>
+                    <Card style={{ width: '18rem' }}>
+                      <Card.Header as="h5">{x.name}</Card.Header>
+                      <Card.Body>
+                        <Card.Subtitle className="mb-2 text-muted">
+                          {x.temperature} °F
+                          <br />
+                          {x.humidity}% Humidity
+                        </Card.Subtitle>                        
+                      </Card.Body>
+                      <Card.Footer><div>
+                        <span style={this.dateCheck(x.lastUpdated, 20) ? { fontSize: 13, fontWeight: "bold", color: "red" } : { fontSize: 13 }}>
+                          {datetimeFormatter(x.lastUpdated)}
+                        </span>
+                      </div>
+                      </Card.Footer>
+                    </Card>
+                  </Col>                  
                 ))}
               </Row>
             </Container>
@@ -118,9 +148,9 @@ export class DevicesPage extends React.Component<Props, IDevicesPage> {
   }
 }
 
-export default DevicesPage;
+export default MyHousePage;
 
-export interface IDevicesPage {
+export interface IMyHousePage {
   message: string;
   data: ITwinCore[];
 }
