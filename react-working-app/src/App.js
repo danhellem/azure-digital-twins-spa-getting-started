@@ -5,6 +5,7 @@ import { PageLayout } from "./components/PageLayout";
 import { DevicesPage } from "./pages/DevicesPage";
 import { MyHousePage } from "./pages/MyHousePage";
 import { TestPage } from "./pages/TestPage";
+import { GenerateDataPage } from "./pages/GenerateDataPage";
 import { Header } from "./components/Header";
 
 class App extends Component {
@@ -18,6 +19,7 @@ class App extends Component {
           <Route exact path="/" component={ TestPage }></Route>
           <Route path="/devices" component={ DevicesPage }></Route>
           <Route path="/myhouse" component={ MyHousePage }></Route>
+          <Route path="/generatedata" component={ GenerateDataPage }></Route>
         </Switch>
       </div>
     );
