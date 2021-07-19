@@ -15,12 +15,14 @@ class App extends Component {
         <PageLayout>
           <Header></Header>
         </PageLayout>
+        <div style={{marginTop: "20px", marginLeft: "10px", marginRight: "10px"}}>  
         <Switch>
           <Route exact path="/" component={ TestPage }></Route>
           <Route path="/devices" component={ DevicesPage }></Route>
           <Route path="/myhouse" component={ MyHousePage }></Route>
           <Route path="/generatedata" component={ GenerateDataPage }></Route>
         </Switch>
+        </div>
       </div>
     );
   }

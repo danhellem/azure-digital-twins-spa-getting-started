@@ -1,5 +1,5 @@
 import React from "react";
-import { Row, Col, Container, Card, Button } from "react-bootstrap";
+import { Row, Col, Container, Card, Button, Alert } from "react-bootstrap";
 
 import { InteractiveBrowserCredential } from "@azure/identity";
 
@@ -69,6 +69,16 @@ export class GenerateDataPage extends React.Component<Props, IGenerateDataPage> 
                     </Button>
                   </div>
                 </Col>
+              </Row>
+              <Row>
+              <Alert variant="danger">
+                <Alert.Heading>Oh snap! You got an error!</Alert.Heading>
+                <p>
+                  Change this and that and try again. Duis mollis, est non commodo
+                  luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.
+                  Cras mattis consectetur purus sit amet fermentum.
+                </p>
+              </Alert>
               </Row>
               <Row>
                 <Col md={4} lg={4} sm={12}>

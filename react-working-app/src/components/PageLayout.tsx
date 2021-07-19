@@ -9,9 +9,9 @@ export const PageLayout = (props: { children: any; }) => {
         <>
             <Navbar bg="secondary" variant="dark">
                 <a className="navbar-brand" href="/" style={{paddingLeft: "20px"}}>Azure Digital Twins Working React App</a>               
-            </Navbar>         
-            <br />
-            {props.children}
+            </Navbar>                   
+            <br />            
+            {props.children}            
         </>
     );
     

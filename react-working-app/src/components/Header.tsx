@@ -12,6 +12,9 @@ export const Header = () => (
                   <Link to="/">Test Page</Link>
                 </Col>
                 <Col md={2} lg={1} sm={2}>
+                  <Link to="/generatedata">Generate Data</Link>
+                </Col>
+                <Col md={2} lg={1} sm={2}>
                   <Link to="/devices">Devices</Link>
                 </Col>
                 <Col md={2} lg={1} sm={2}>
